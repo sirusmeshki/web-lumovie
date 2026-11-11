@@ -14,6 +14,11 @@
 }
 .seasons {
   @include row-center;
+
+  :global(.swiper-slide) {
+    width: auto;
+    height: auto;
+  }
 }
 
 .season {

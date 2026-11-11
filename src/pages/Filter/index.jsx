@@ -21,7 +21,10 @@ const Filter = () => {
   const loaderData = useLoaderData();
   const isMoviesCompact = useSelector((state) => state.isMoviesCompact.value);
 
-  const { isLoading, error, isError, data } = useQuery("all", fetchMovies);
+  const { isLoading, error, isError, data } = useQuery({
+    queryKey: ["all"],
+    queryFn: fetchMovies,
+  });
   if (isError) return <ErrorText message={error.message} />;
 
   return (

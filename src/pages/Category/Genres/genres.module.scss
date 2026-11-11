@@ -1,0 +1,33 @@
+@use "/src/sass/helpers/" as *;
+
+.genres {
+  @include row;
+  height: 100%;
+
+  .content {
+    @include page-content;
+    @include col;
+    gap: rem(32);
+  }
+
+  .section {
+    @include col;
+    gap: rem(16);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(rem(200), 1fr));
+    gap: rem(14);
+    width: 100%;
+
+    @include mq("tablet") {
+      grid-template-columns: repeat(auto-fill, minmax(rem(160), 1fr));
+      gap: rem(12);
+    }
+
+    @include mq("phone-wide") {
+      grid-template-columns: repeat(auto-fill, minmax(rem(140), 1fr));
+    }
+  }
+}

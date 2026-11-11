@@ -1,0 +1,46 @@
+@use "/src/sass/helpers/" as *;
+
+.genre {
+  @include row;
+  height: 100%;
+
+  .content {
+    @include page-content;
+    @include col;
+    gap: rem(24);
+  }
+
+  .grid {
+    @include row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: rem(18);
+  }
+
+  .card {
+    height: auto;
+    flex: 0 0 auto;
+
+    @include mq("tablet") {
+      flex: 1 1 rem(300);
+      max-width: 100%;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+
+  .loading-spinner {
+    @include row-center;
+    width: 100%;
+    padding: rem(20);
+  }
+
+  .empty {
+    @include row-center;
+    padding: rem(40);
+    color: $clr-text-p;
+  }
+}

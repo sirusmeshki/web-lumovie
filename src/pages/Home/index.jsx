@@ -1,5 +1,5 @@
 import S from "./home.module.scss";
-import MediaQuery, { useMediaQuery } from "react-responsive";
+import MediaQuery from "react-responsive";
 
 import FeaturedMovies from "./FeaturedMovies";
 import NewRelease from "./NewRelease";
@@ -11,14 +11,9 @@ import Bookmark from "/src/components/Cards/Bookmark";
 import Cinema from "/src/components/Cards/Cinema";
 
 const Home = () => {
-  const onTabletOrMobile = useMediaQuery({ query: "(max-width: 61.875rem)" });
-
   return (
     <div className={S["home"]}>
-      <section
-        className={`${onTabletOrMobile ? S["content--mobile"] : ""} ${
-          S["content"]
-        }`}>
+      <section className={S["content"]}>
         <FeaturedMovies />
         <NewRelease />
 

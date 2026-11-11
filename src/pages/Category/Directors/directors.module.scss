@@ -1,0 +1,90 @@
+@use "/src/sass/helpers/" as *;
+
+.directors {
+  @include row;
+  height: 100%;
+
+  .content {
+    @include page-content;
+    @include col;
+    gap: rem(20);
+  }
+}
+
+.toolbar {
+  @include col;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  gap: rem(12);
+  width: 100%;
+  flex-shrink: 0;
+  padding-block: rem(10) rem(14);
+  margin-block-start: rem(-10);
+  background-color: hsla(0, 0%, 2%, 0.92);
+  backdrop-filter: blur(12px);
+  border-block-end: 1px solid $clr-border-primary;
+}
+
+.search-form {
+  @include row-center;
+  gap: rem(8);
+  width: 100%;
+  max-width: rem(420);
+  padding-inline: rem(16);
+  height: rem(44);
+  border-radius: 5em;
+  background-color: $clr-bg-primary;
+  border: 1px solid $clr-border-primary;
+  transition: border 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    border: 1px solid $clr-border--active;
+  }
+
+  .search-input {
+    flex: 1;
+    padding-block: rem(12);
+    font-size: rem(13);
+    background-color: transparent;
+    border: none;
+    color: $clr-text-h3;
+    outline: none;
+
+    &::placeholder {
+      color: $clr-text-p;
+    }
+  }
+}
+
+.directors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(rem(150), 1fr));
+  gap: rem(20);
+  width: 100%;
+
+  @include mq("tablet") {
+    grid-template-columns: repeat(auto-fill, minmax(rem(120), 1fr));
+    gap: rem(16);
+  }
+
+  @include mq("phone-wide") {
+    grid-template-columns: repeat(auto-fill, minmax(rem(100), 1fr));
+    gap: rem(12);
+  }
+}
+
+.loading-spinner {
+  @include row-center;
+  width: 100%;
+  padding: rem(20);
+}
+
+.no-results {
+  @include row-center;
+  padding: rem(40);
+  text-align: center;
+  color: $clr-text-p;
+  font-size: rem(16);
+}

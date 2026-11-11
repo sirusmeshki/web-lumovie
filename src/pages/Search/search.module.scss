@@ -1,23 +1,23 @@
 @use "/src/sass/helpers" as *;
 
 .content {
-  @include scroll-bar;
-  overflow-y: scroll;
-  padding: 1em;
-  height: 100%;
-  width: 100%;
+  @include page-content;
 
   .movie-list {
     @include row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: rem(18);
 
     .movie-card {
-      width: 100%;
+      @include mq("tablet") {
+        flex: 1 1 rem(300);
+        max-width: 100%;
 
-      img {
-        object-fit: contain;
+        img {
+          object-fit: contain;
+        }
       }
     }
   }
@@ -26,12 +26,5 @@
     @include row-center;
     width: 100%;
     padding: 1em;
-  }
-}
-@media screen and (max-width: rem(1039)) {
-  .movie-list {
-    .movie-card {
-      flex: 1 1 300px;
-    }
   }
 }

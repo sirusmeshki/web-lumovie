@@ -37,7 +37,7 @@ const Details = ({ serie, credits, certification }) => {
           </div>
         </div>
       </section>
-      <Genres genres={serie.genres} />
+      <Genres genres={serie.genres} type="tv" />
       <section className={S["additional-info"]}>
         <UserScore score={serie.vote_average} />
         <Countries countries={serie.production_countries} />

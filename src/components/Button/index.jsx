@@ -47,10 +47,13 @@ const Icon = ({
   alert,
   onClick,
   onSubmit,
+  type,
 }) => {
   return (
     <ButtonTemplate
-      className={`${className ? className : ""} ${border ? S["button--border"] : ""}`}
+      className={`${className ? className : ""} ${
+        border ? S["button--border"] : ""
+      }`}
       icon={icon}
       href={href}
       dimension={dimension}
@@ -58,6 +61,7 @@ const Icon = ({
       onSubmit={onSubmit}
       tooltip={tooltip}
       alert={alert}
+      type={type}
     ></ButtonTemplate>
   );
 };
@@ -94,7 +98,9 @@ const CTA = ({ text, href, width, type, onClick }) => {
 const Link = ({ text, href, icon, alt, underline, onClick }) => {
   return (
     <ButtonTemplate
-      className={`${S["button--link"]} ${underline ? S["button--link--underline"] : ""}`}
+      className={`${S["button--link"]} ${
+        underline ? S["button--link--underline"] : ""
+      }`}
       text={text}
       href={href}
       icon={icon}
@@ -120,7 +126,9 @@ const HamburgerMenu = ({ isClosed, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`${S["hamburger-menu"]} ${isClosed ? `${S["hamburger-menu--closed"]}` : ""}`}
+      className={`${S["hamburger-menu"]} ${
+        isClosed ? `${S["hamburger-menu--closed"]}` : ""
+      }`}
     >
       <div className={S["line"]}></div>
     </div>

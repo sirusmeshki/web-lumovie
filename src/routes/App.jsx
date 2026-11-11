@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 120 * (60 * 1000), // 120 mins
-      cacheTime: 125 * (60 * 1000), // 125 mins
+      gcTime: 125 * (60 * 1000), // 125 mins
       refetchOnWindowFocus: false,
     },
   },
@@ -47,7 +47,7 @@ export default function App() {
 
           <Outlet />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </section>
     </QueryClientProvider>
   );

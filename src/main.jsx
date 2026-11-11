@@ -25,6 +25,7 @@ import Search from "./pages/Search";
 import Movies from "/src/pages/Category/Movies";
 import Series from "/src/pages/Category/Series";
 import Genres from "/src/pages/Category/Genres";
+import Genre from "/src/pages/Category/Genre";
 import Actors from "/src/pages/Category/Actors";
 import Directors from "/src/pages/Category/Directors";
 
@@ -39,6 +40,9 @@ import Movie from "./pages/Category/Movie";
 import { loader as serieLoader } from "/src/pages/Category/Serie";
 import Serie from "./pages/Category/Serie";
 
+import { loader as actorLoader } from "/src/pages/Category/Actor";
+import Actor from "./pages/Category/Actor";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<Error />}>
@@ -47,6 +51,13 @@ const router = createBrowserRouter(
       {/* movie content pages */}
       <Route path="movie/:movieId" element={<Movie />} loader={movieLoader} />
       <Route path="serie/:serieId" element={<Serie />} loader={serieLoader} />
+      <Route path="actor/:actorName" element={<Actor />} loader={actorLoader} />
+      <Route
+        path="director/:actorName"
+        element={<Actor />}
+        loader={actorLoader}
+      />
+      <Route path="genre/:genreName" element={<Genre />} />
 
       {/* cateogry routes */}
       <Route path="movies" element={<Movies />} />
@@ -55,6 +66,7 @@ const router = createBrowserRouter(
       <Route path="actors" element={<Actors />} />
       <Route path="directors" element={<Directors />} />
       <Route path="cinema" element={<Cinema />} />
+
 
       {/* general pages routes */}
       <Route path="upcomings" element={<Upcomings />} />

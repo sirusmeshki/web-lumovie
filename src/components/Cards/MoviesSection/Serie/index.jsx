@@ -17,10 +17,10 @@ import AirDate from "../../../Movie/Detail/AirDate";
 import Seasons from "../../../Movie/Detail/Seasons";
 
 const Serie = ({ serie, isCompact, className }) => {
-  const query = useSerie(1399);
+  const query = useSerie(serie.id);
   if (query.isLoading) return <OnLoading />;
 
-  const [detail, _, certifications] = query.data;
+  const [detail] = query.data;
 
   return (
     <div
@@ -49,8 +49,10 @@ const Serie = ({ serie, isCompact, className }) => {
           isCard
         />
         <div className={S["details"]}>
-          <Genres genres={detail.genres} isCard />
-          <Runtime minute={detail.episode_run_time} />
+          <Genres genres={detail.genres} isCard type="tv" />
+          {detail.episode_run_time?.[0] && (
+            <Runtime minute={detail.episode_run_time[0]} />
+          )}
           <Seasons seasons={detail.number_of_seasons} />
           <AirDate
             status={detail.status}

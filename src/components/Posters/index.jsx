@@ -1,7 +1,8 @@
 import S from "./posters.module.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 import Poster from "./Poster";
 

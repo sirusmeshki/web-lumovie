@@ -30,6 +30,7 @@
     .image {
       max-width: rem(160);
       max-height: rem(240);
+      position: relative;
     }
 
     .info {
@@ -75,6 +76,7 @@
     max-height: 100%;
     max-width: 50%;
     min-width: 50%;
+    position: relative;
 
     //<img /> tag
     img {
@@ -84,6 +86,24 @@
       border-radius: rem(12);
       -o-object-fit: cover;
       object-fit: cover;
+      aspect-ratio: 27/40;
+    }
+  }
+
+  .image:hover .bookmark {
+    opacity: 1;
+  }
+
+  .bookmark {
+    position: absolute;
+    bottom: rem(10);
+    left: rem(10);
+    opacity: 0;
+
+    @include mq("tablet-wide") {
+      top: rem(5);
+      left: rem(5);
+      opacity: 1;
     }
   }
 

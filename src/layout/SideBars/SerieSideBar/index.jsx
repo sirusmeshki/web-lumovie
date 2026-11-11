@@ -51,7 +51,7 @@ const SerieSideBar = () => {
         className={S["header"]}
         seemore="See More"
         title="Popular Shows This Week"
-        href="/popular-series"
+        href="/series"
       />
 
       <div className={S["cards"]}>

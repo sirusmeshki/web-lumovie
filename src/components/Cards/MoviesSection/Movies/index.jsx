@@ -1,7 +1,8 @@
 import S from "./movies.module.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
 
 import Movie from "../Movie";
 
@@ -14,7 +15,7 @@ const Movies = ({ data, swiperRef, isCompact }) => {
           swiperRef.current = swiper;
         }}
         grabCursor={true}
-        slidesPerView={"auto"}
+        slidesPerView="auto"
         spaceBetween={10}
       >
         {data.map((movie, index) => {

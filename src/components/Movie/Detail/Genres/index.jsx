@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import Button from "/src/components/Button";
 import useTitle from "/src/hooks/useTitle";
 
-const Genres = ({ genres, isCard }) => {
+const Genres = ({ genres, isCard, type = "movie" }) => {
+  const mediaType = type === "serie" || type === "tv" ? "tv" : "movie";
+
   return (
     <div className={S["genres"]}>
       {isCard ? (
@@ -13,7 +15,7 @@ const Genres = ({ genres, isCard }) => {
               <Link
                 className={S["fact"]}
                 key={genre.id}
-                to={`/genre/${useTitle(genre.name)}`}
+                to={`/genre/${useTitle(genre.name)}?type=${mediaType}`}
               >
                 {genre.name}
               </Link>
@@ -24,7 +26,10 @@ const Genres = ({ genres, isCard }) => {
         <div className={S["genres-page"]}>
           {genres.map((genre) => {
             return (
-              <Link key={genre.id} to={`/genre/${useTitle(genre.name)}`}>
+              <Link
+                key={genre.id}
+                to={`/genre/${useTitle(genre.name)}?type=${mediaType}`}
+              >
                 <Button.Stroke text={genre.name} />
               </Link>
             );

@@ -1,0 +1,106 @@
+@use "/src/sass/helpers/" as *;
+
+.filters {
+  @include row-center--a;
+  flex-wrap: wrap;
+  gap: rem(8) rem(10);
+  width: 100%;
+
+  @include mq("tablet") {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-block: rem(2);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.group {
+  @include row-center--a;
+  flex-wrap: wrap;
+  gap: rem(6);
+
+  @include mq("tablet") {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+  }
+
+  & + & {
+    padding-inline-start: rem(10);
+    border-inline-start: 1px solid $clr-border-secondry;
+  }
+}
+
+.chip {
+  @include row-center;
+  flex-shrink: 0;
+  gap: rem(6);
+  height: rem(32);
+  padding-inline: rem(12);
+  color: $clr-text-h6;
+  font-size: rem(12);
+  font-weight: 500;
+  background-color: $clr-bg-transparent;
+  border: 1px solid $clr-border-secondry;
+  border-radius: rem(100);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    background-color: $clr-bg-trinary;
+    border-color: $clr-border--active;
+    color: $clr-text-h4;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:focus-visible {
+    outline: 1px solid $clr-primary;
+    outline-offset: 2px;
+  }
+
+  &--flag {
+    width: rem(32);
+    padding-inline: 0;
+  }
+
+  &--active {
+    color: $clr-text-h2;
+    background-color: $clr-bg-trinary;
+    border-color: $clr-border--active;
+
+    .icon svg path {
+      stroke: $clr-icon--active;
+    }
+  }
+}
+
+.icon {
+  @include row-center;
+  width: rem(14);
+  height: rem(14);
+
+  svg {
+    width: rem(14);
+    height: rem(14);
+  }
+}
+
+.flag {
+  width: rem(16);
+  height: rem(12);
+  object-fit: cover;
+  border-radius: rem(2);
+}
+
+.text {
+  line-height: 1;
+  text-transform: capitalize;
+  white-space: nowrap;
+}

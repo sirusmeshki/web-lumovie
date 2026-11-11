@@ -1,11 +1,25 @@
-import Title from "/src/components/Title";
 import S from "./series.module.scss";
+
+import FeaturedSeries from "./FeaturedSeries";
+import AiringToday from "./AiringToday";
+import OnTheAir from "./OnTheAir";
+import Popular from "./Popular";
+import TopRated from "./TopRated";
 
 const Series = () => {
   return (
-    <section className={S["content"]}>
-      <Title title="Series" />
-    </section>
+    <div className={S["series"]}>
+      <section className={S["content"]}>
+        <FeaturedSeries />
+        <AiringToday />
+        <OnTheAir />
+
+        <div className={S["lists"]}>
+          <TopRated />
+          <Popular />
+        </div>
+      </section>
+    </div>
   );
 };
 

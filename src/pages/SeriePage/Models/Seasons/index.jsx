@@ -5,7 +5,8 @@ import Container from "/src/components/HOC/Container";
 import Wrapper from "/src/components/HOC/Wrapper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
 
 import { useRef } from "react";
 import SectionHeader from "../../../../components/Cards/SectionHeader";

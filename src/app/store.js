@@ -1,10 +1,14 @@
-// https://codesandbox.io/s/react-redux-toolkit-persist-izxb6?file=/src/app/store.js:405-638
-
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
-import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
-import thunk from "redux-thunk";
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 
 import userReducer from "./slice/sliceUser";
 import sideMenuReducer from "./slice/sliceSideMenu";
@@ -29,8 +33,13 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
   reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== "production",
-  middleware: [thunk],
+  devTools: import.meta.env.MODE !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export default store;

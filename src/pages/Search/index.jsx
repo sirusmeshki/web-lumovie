@@ -20,28 +20,30 @@ const Search = () => {
 
   const onTablet = useMediaQuery({ query: "(max-width: 64.938rem)" });
 
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView]);
-
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("q");
 
   const { data, isLoading, isError, error, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
       queryKey: ["search-query", searchQuery],
-      queryFn: ({ pageParam = 1 }) =>
+      initialPageParam: 1,
+      queryFn: ({ pageParam }) =>
         useFetch(
           `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${pageParam}&include_adult=false&region=US`
         ),
-
       getNextPageParam: (lastPage, pages) =>
         lastPage.total_pages === pages.length ? undefined : pages.length + 1,
+      enabled: Boolean(searchQuery),
     });
 
-  if (isLoading) return <Loading />;
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
+
+  if (!searchQuery) return <SearchError />;
+  if (isLoading || !data) return <Loading />;
   if (isError) return <ErrorText message={error.message} />;
 
   // if result didn`t found

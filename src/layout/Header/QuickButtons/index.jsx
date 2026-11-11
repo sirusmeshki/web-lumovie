@@ -9,7 +9,7 @@ import IC_Help from "/src/assets/icon/IC_Help";
 
 const QuickButtons = () => {
   const [notifs, setNotifs] = useState([{}, {}]);
-  const [friendsOnline, setFriendsOnline] = useState([{}, {}, {}, {}]);
+  const [friendsOnline, setFriendsOnline] = useState([]);
 
   const [buttons, setButtons] = useState([
     {

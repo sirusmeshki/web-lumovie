@@ -12,4 +12,11 @@
     width: 100%;
     height: 100%;
   }
+
+  // Swiper's default CSS sets slides to width: 100%, which breaks slidesPerView: "auto"
+  .swiper-slide {
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+  }
 }

@@ -1,9 +1,11 @@
 import S from "./movie.module.scss";
 import { Link } from "react-router-dom";
+import Button from "/src/components/Button";
 
 import { POSTER_URL_IMAGE } from "/src/api";
 
 import PosterPlaceholder from "/src/assets/icon/poster_placeholder.png";
+import IC_Bookmark from "/src/assets/icon/IC_Bookmark";
 
 import useTitle from "/src/hooks/useTitle";
 import useMovie from "/src/hooks/useMovie";
@@ -26,21 +28,25 @@ const Movie = ({ movie, isCompact, className }) => {
     <div
       className={`${S["movie"]} ${
         isCompact ? S["movie--compact"] : S["movie--normal"]
-      } ${className ? className : ""}`}
-    >
-      <Link
-        to={`/movie/${movie.id}-${useTitle(movie.title)}`}
-        className={S["image"]}
-      >
-        {detail.poster_path ? (
-          <img
-            src={`${POSTER_URL_IMAGE}/${detail.poster_path}`}
-            alt={`${detail.title} poster`}
-          />
-        ) : (
-          <img src={PosterPlaceholder} />
-        )}
-      </Link>
+      } ${className ? className : ""}`}>
+      <div className={S["image"]}>
+        <Link to={`/movie/${movie.id}-${useTitle(movie.title)}`}>
+          {detail.poster_path ? (
+            <img
+              src={`${POSTER_URL_IMAGE}/${detail.poster_path}`}
+              alt={`${detail.title} poster`}
+            />
+          ) : (
+            <img src={PosterPlaceholder} />
+          )}
+        </Link>
+        <Button.Icon
+          className={S["bookmark"]}
+          icon={<IC_Bookmark />}
+          dimension={2.5}
+          border
+        />
+      </div>
       <div className={S["info"]}>
         <Title category="movie" title={movie.title} movieId={movie.id} isCard />
         <div className={S["details"]}>

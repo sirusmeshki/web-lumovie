@@ -7,5 +7,10 @@
 
     &-list {
         width: 100%;
+
+        :global(.swiper-slide) {
+            width: auto;
+            height: auto;
+        }
     }
 }
